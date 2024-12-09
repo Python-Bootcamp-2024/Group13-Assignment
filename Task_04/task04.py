@@ -26,15 +26,6 @@ app.layout = html.Div([
                 value='Rating'
             )
         ]),
-        dcc.Tab(label='Interactive Data Filter', children=[
-            html.Label("Filter by Country"),
-            dcc.Dropdown(
-                id='country-filter',
-                options=[{'label': country, 'value': country} for country in wine_df['Country'].unique()],
-                value=wine_df['Country'].unique()[0]
-            ),
-            dcc.Graph(id='filtered-bar-chart')
-        ])
     ])
 ])
 
@@ -48,18 +39,6 @@ def update_country_bar_chart(metric):
         wine_df.groupby('Country')[metric].mean().reset_index(),
         x='Country', y=metric,
         title=f"Average {metric} by Country"
-    )
-    return fig
-
-@app.callback(
-    Output('filtered-bar-chart', 'figure'),
-    Input('country-filter', 'value')
-)
-def update_filtered_bar_chart(country):
-    filtered_data = wine_df[wine_df['Country'] == country]
-    fig = px.bar(
-        filtered_data, x='Wine style', y='Rating',
-        title=f"Ratings of Wine Styles in {country}"
     )
     return fig
 
