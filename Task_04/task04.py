@@ -26,6 +26,15 @@ app.layout = html.Div([
                 value='Rating'
             )
         ]),
+        dcc.Tab(label='Wine Style Analysis', children=[
+            dcc.Graph(id='wine-style-pie-chart'),
+        ]),
+        dcc.Tab(label='Alcohol vs Price', children=[
+            dcc.Graph(id='alcohol-price-scatter'),
+        ]),
+        dcc.Tab(label='Food Pairings', children=[
+            dcc.Graph(id='food-pairings-bar'),
+        ]),
         dcc.Tab(label='Interactive Data Filter', children=[
             html.Label("Filter by Country"),
             dcc.Dropdown(
@@ -50,6 +59,50 @@ def update_country_bar_chart(metric):
         title=f"Average {metric} by Country"
     )
     return fig
+
+
+
+@app.callback(
+    Output('wine-style-pie-chart', 'figure'),
+    Input('country-filter', 'value')
+)
+def update_wine_style_pie_chart(country):
+    filtered_data = wine_df[wine_df['Country'] == country]
+    fig = px.pie(
+        filtered_data, names='Wine style',
+        title=f"Wine Styles in {country}"
+    )
+    return fig
+
+
+
+@app.callback(
+    Output('alcohol-price-scatter', 'figure'),
+    Input('country-filter', 'value')
+)
+def update_alcohol_price_scatter(country):
+    filtered_data = wine_df[wine_df['Country'] == country]
+    fig = px.scatter(
+        filtered_data, x='Alcohol content', y='Price',
+        color='Country', size='Rating',
+        title="Alcohol Content vs Price"
+    )
+    return fig
+
+
+
+@app.callback(
+    Output('food-pairings-bar', 'figure'),
+    Input('country-filter', 'value')
+)
+def update_food_pairings_bar(country):
+    food_columns = [col for col in wine_df.columns if col not in ['Country', 'Region', 'Price', 'Rating', 'Wine style']]
+    food_data = wine_df[wine_df['Country'] == country][food_columns].sum().reset_index()
+    food_data.columns = ['Food', 'Count']
+    fig = px.bar(food_data, x='Food', y='Count', title="Food Pairings")
+    return fig
+
+
 
 @app.callback(
     Output('filtered-bar-chart', 'figure'),
