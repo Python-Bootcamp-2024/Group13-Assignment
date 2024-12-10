@@ -32,6 +32,9 @@ app.layout = html.Div([
         dcc.Tab(label='Alcohol vs Price', children=[
             dcc.Graph(id='alcohol-price-scatter'),
         ]),
+        dcc.Tab(label='Food Pairings', children=[
+            dcc.Graph(id='food-pairings-bar'),
+        ]),
         dcc.Tab(label='Interactive Data Filter', children=[
             html.Label("Filter by Country"),
             dcc.Dropdown(
@@ -84,6 +87,19 @@ def update_alcohol_price_scatter(country):
         color='Country', size='Rating',
         title="Alcohol Content vs Price"
     )
+    return fig
+
+
+
+@app.callback(
+    Output('food-pairings-bar', 'figure'),
+    Input('country-filter', 'value')
+)
+def update_food_pairings_bar(country):
+    food_columns = [col for col in wine_df.columns if col not in ['Country', 'Region', 'Price', 'Rating', 'Wine style']]
+    food_data = wine_df[wine_df['Country'] == country][food_columns].sum().reset_index()
+    food_data.columns = ['Food', 'Count']
+    fig = px.bar(food_data, x='Food', y='Count', title="Food Pairings")
     return fig
 
 
