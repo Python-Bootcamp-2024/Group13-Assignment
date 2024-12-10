@@ -60,8 +60,6 @@ def update_country_bar_chart(metric):
     )
     return fig
 
-
-
 @app.callback(
     Output('wine-style-pie-chart', 'figure'),
     Input('country-filter', 'value')
@@ -73,8 +71,6 @@ def update_wine_style_pie_chart(country):
         title=f"Wine Styles in {country}"
     )
     return fig
-
-
 
 @app.callback(
     Output('alcohol-price-scatter', 'figure'),
@@ -89,8 +85,6 @@ def update_alcohol_price_scatter(country):
     )
     return fig
 
-
-
 @app.callback(
     Output('food-pairings-bar', 'figure'),
     Input('country-filter', 'value')
@@ -101,8 +95,6 @@ def update_food_pairings_bar(country):
     food_data.columns = ['Food', 'Count']
     fig = px.bar(food_data, x='Food', y='Count', title="Food Pairings")
     return fig
-
-
 
 @app.callback(
     Output('filtered-bar-chart', 'figure'),
