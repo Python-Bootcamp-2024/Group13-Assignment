@@ -88,18 +88,9 @@ The repository is structured as follows:
    ```  
 3. Open the provided localhost link to interact with the dashboard.  
 
----
-
 ## **Deliverables**  
 - GitHub Repository: Includes all Python scripts, notebooks, and data.  
 - Video Clip: Demonstrates the interactive dashboard functionality.  
 - Presentation: Summarizes the project and its insights.  
 
 ---
-
-## **Acknowledgments**  
-Special thanks to **PyData Sri Lanka** for organizing UniConnect 2024 and providing this opportunity to learn and grow.  
-
----
-
-Feel free to adapt this further based on your project specifics!
