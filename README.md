@@ -80,7 +80,7 @@ The repository is structured as follows:
 1. Navigate to the `Group13-Assignment/Task_04/task04.ipynb` folder.  
 2. Run `dashboard.py` using the command:  
    ```bash  
-   python dashboard.py  
+   python task04.ipynb  
    ```  
 3. Open the provided localhost link to interact with the dashboard.  
 
