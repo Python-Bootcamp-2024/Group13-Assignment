@@ -68,16 +68,16 @@ The repository is structured as follows:
 ## **How to Run**  
 
 ### **1. Data Preparation**  
-1. Open `notebooks/data_preparation.ipynb` in Jupyter Notebook.  
+1. Open `Group13-Assignment/Task_02/task_02.ipynb` in Jupyter Notebook.  
 2. Execute the cells sequentially to load, clean, and prepare the dataset.  
 
 ### **2. NLP Task**  
-1. Open `notebooks/huggingface_nlp.ipynb`.  
+1. Open `Group13-Assignment/Task_03/task_03_Combined.ipynb`.  
 2. Ensure the HuggingFace Transformers library is installed.  
 3. Run the notebook to classify the reviews and visualize the results.  
 
 ### **3. Dashboard**  
-1. Navigate to the `dashboard/` folder.  
+1. Navigate to the `Group13-Assignment/Task_04/task04.ipynb` folder.  
 2. Run `dashboard.py` using the command:  
    ```bash  
    python dashboard.py  
