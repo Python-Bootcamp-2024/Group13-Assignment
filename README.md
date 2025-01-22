@@ -1,7 +1,3 @@
-Here’s a detailed **README.md** file description for your GitHub repository:
-
----
-
 # PyData Sri Lanka - UniConnect 2024  
 
 ## **Project Overview**  
